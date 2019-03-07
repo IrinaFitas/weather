@@ -2,6 +2,7 @@
 	<div id="app">
 		<div class="container">
 			<app-select-country :countries="countries" @countryWasChoose="getCountry"></app-select-country>
+			<app-select-city :selectedCitiesFromParent="selectedCitiesList"></app-select-city>
 			<figure class="blue">
 				<svg 
 					xmlns="http://www.w3.org/2000/svg"
@@ -158,6 +159,7 @@
 import cityList from "./data/city.list.min.json";
 import countriesCodes from "./data/countries.iso.codes.json";
 import SelectCountry from "./components/SelectCountry.vue";
+import SelectCity from "./components/SelectCity.vue";
 
 export default {
 	data() {
@@ -168,7 +170,8 @@ export default {
 		}
 	},
 	components: {
-		appSelectCountry: SelectCountry
+		appSelectCountry: SelectCountry,
+		appSelectCity: SelectCity
 	},
 	methods: {
 		getCountry(country) {
@@ -177,8 +180,7 @@ export default {
 	},
 	computed: {
 		selectedCitiesList() {
-			this.cities = cityList.filter(elem => elem.country === this.country);
-			console.log(this.cities);
+			return this.cities = cityList.filter(elem => elem.country === this.country);
 		}
 	},
 	created() {
@@ -202,7 +204,6 @@ export default {
 				}
 			}
 		});
-		console.log(this.country);
 	}
 }
 </script>
