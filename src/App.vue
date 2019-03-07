@@ -1,6 +1,7 @@
 <template>
 	<div id="app">
 		<div class="container">
+			<app-select-country :countries="countries" @countryWasChoose="getCountry"></app-select-country>
 			<figure class="blue">
 				<svg 
 					xmlns="http://www.w3.org/2000/svg"
@@ -154,11 +155,54 @@
 </template>
 
 <script>
-
+import cityList from "./data/city.list.min.json";
+import countriesCodes from "./data/countries.iso.codes.json";
+import SelectCountry from "./components/SelectCountry.vue";
 
 export default {
+	data() {
+		return {
+			countries: [],
+			country: "",
+			cities: []
+		}
+	},
+	components: {
+		appSelectCountry: SelectCountry
+	},
+	methods: {
+		getCountry(country) {
+			this.country = country;
+		}
+	},
+	computed: {
+		selectedCitiesList() {
+			this.cities = cityList.filter(elem => elem.country === this.country);
+			console.log(this.cities);
+		}
+	},
 	created() {
-		console.log(this.$http);
+		this.$http.get("https://api.openweathermap.org/data/2.5/weather?q=Odessa,ua&units=metric&appid=e642e0062bffd9aca2bf891e4d8646a2")
+			.then( response => {
+				return response.json();
+			});
+	},
+	mounted() {
+		let set = new Set();
+		cityList.forEach( elem => set.add(elem.country));
+		set.forEach(elem => {
+			if (elem) {
+				const currentItem = countriesCodes.find(item => item['alpha-2'] === elem);
+
+				if (currentItem) {
+					this.countries.push({
+						value: elem,
+						label: currentItem.name
+					});
+				}
+			}
+		});
+		console.log(this.country);
 	}
 }
 </script>
