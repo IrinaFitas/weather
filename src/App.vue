@@ -1,155 +1,11 @@
 <template>
 	<div id="app">
 		<div class="container">
-			<app-select-country :countries="countries" @countryWasChoose="getCountry"></app-select-country>
-			<app-select-city :selectedCitiesFromParent="selectedCitiesList"></app-select-city>
-			<figure class="blue">
-				<svg 
-					xmlns="http://www.w3.org/2000/svg"
-					xmlns:xlink="http://www.w3.org/1999/xlink"
-					width="90px" height="77px">
-					<defs>
-					<filter filterUnits="userSpaceOnUse" id="Filter_0" x="0px" y="0px" width="90px" height="77px"  >
-						<feOffset in="SourceAlpha" dx="0" dy="1" />
-						<feGaussianBlur result="blurOut" stdDeviation="0" />
-						<feFlood flood-color="rgb(6, 179, 219)" result="floodOut" />
-						<feComposite operator="atop" in="floodOut" in2="blurOut" />
-						<feComponentTransfer><feFuncA type="linear" slope="0.75"/></feComponentTransfer>
-						<feMerge>
-						<feMergeNode/>
-						<feMergeNode in="SourceGraphic"/>
-					</feMerge>
-					</filter>
-
-					</defs>
-					<g filter="url(#Filter_0)">
-					<path fill-rule="evenodd"  fill="rgb(255, 255, 255)"
-					d="M65.393,65.444 C64.850,65.444 64.137,65.444 63.350,65.444 C63.350,62.639 62.697,59.840 61.422,57.272 C63.010,57.272 64.386,57.272 65.393,57.272 C74.419,57.272 81.737,49.954 81.737,40.927 C81.737,31.900 74.419,24.582 65.393,24.582 C62.123,24.582 59.093,25.566 56.538,27.220 C54.021,16.356 44.333,8.238 32.703,8.238 C19.163,8.238 8.186,19.214 8.186,32.755 C8.186,44.918 17.053,54.984 28.669,56.912 C27.367,59.397 26.690,62.118 26.602,64.854 C11.468,61.994 0.014,48.721 0.014,32.755 C0.014,14.701 14.650,0.065 32.703,0.065 C44.971,0.065 55.646,6.833 61.238,16.829 C62.595,16.596 63.969,16.410 65.393,16.410 C78.933,16.410 89.909,27.387 89.909,40.927 C89.909,54.467 78.933,65.444 65.393,65.444 ZM44.962,50.997 L52.185,58.221 C56.175,62.210 56.175,68.678 52.185,72.667 C48.196,76.657 41.728,76.657 37.738,72.667 C33.749,68.678 33.749,62.210 37.738,58.221 L44.962,50.997 Z"/>
-					</g>
-				</svg>
-				<p>Chickago / 30</p>
-			</figure>
-			<figure class="lightgreen">
-				<svg class="icon" 
-					viewBox="0 0 100 80" 
-					xmlns="http://www.w3.org/2000/svg"
-					xmlns:xlink="http://www.w3.org/1999/xlink">
-					<defs>
-					<filter filterUnits="userSpaceOnUse" id="Filter_0" x="0px" y="0px" width="87px" height="78px"  >
-						<feOffset in="SourceAlpha" dx="0" dy="1" />
-						<feGaussianBlur result="blurOut" stdDeviation="0" />
-						<feFlood flood-color="rgb(97, 57, 246)" result="floodOut" />
-						<feComposite operator="atop" in="floodOut" in2="blurOut" />
-						<feComponentTransfer><feFuncA type="linear" slope="0.75"/></feComponentTransfer>
-						<feMerge>
-						<feMergeNode/>
-						<feMergeNode in="SourceGraphic"/>
-					</feMerge>
-					</filter>
-
-					</defs>
-					<g filter="url(#Filter_0)">
-					<path fill-rule="evenodd"  fill="rgb(255, 255, 255)"
-					d="M83.113,41.524 L76.745,41.524 C74.987,41.524 73.562,40.099 73.562,38.340 C73.562,36.582 74.987,35.157 76.745,35.157 L83.113,35.157 C84.872,35.157 86.297,36.582 86.297,38.340 C86.297,40.099 84.872,41.524 83.113,41.524 ZM70.604,20.330 C69.361,21.573 67.345,21.573 66.101,20.330 C64.858,19.086 64.858,17.070 66.101,15.827 L70.604,11.324 C71.847,10.081 73.863,10.081 75.107,11.324 C76.350,12.568 76.350,14.584 75.107,15.827 L70.604,20.330 ZM65.912,45.178 L65.912,45.178 C68.696,48.497 70.378,52.772 70.378,57.444 C70.378,67.994 61.825,76.547 51.275,76.547 C46.855,76.547 30.893,76.547 25.804,76.547 C11.737,76.547 0.333,65.143 0.333,51.076 C0.333,37.009 11.737,25.605 25.804,25.605 C28.307,25.605 30.722,25.975 33.006,26.649 C36.501,22.146 41.950,19.237 48.091,19.237 C58.641,19.237 67.194,27.790 67.194,38.340 C67.194,40.753 66.728,43.052 65.912,45.178 ZM6.701,51.076 C6.701,61.626 15.253,70.179 25.804,70.179 C31.561,70.179 46.467,70.179 51.275,70.179 C58.308,70.179 64.010,64.477 64.010,57.444 C64.010,50.410 58.308,44.708 51.275,44.708 C48.727,44.708 46.366,45.475 44.375,46.763 C42.414,38.298 34.865,31.973 25.804,31.973 C15.253,31.973 6.701,40.525 6.701,51.076 ZM48.091,25.605 C44.568,25.605 41.381,27.035 39.075,29.347 C42.801,31.631 45.899,34.843 48.037,38.667 C49.095,38.485 50.166,38.340 51.275,38.340 C54.658,38.340 57.831,39.229 60.588,40.772 L60.588,40.772 C60.740,39.984 60.826,39.173 60.826,38.340 C60.826,31.307 55.124,25.605 48.091,25.605 ZM48.091,12.870 C46.332,12.870 44.907,11.444 44.907,9.686 L44.907,3.318 C44.907,1.560 46.332,0.134 48.091,0.134 C49.849,0.134 51.275,1.560 51.275,3.318 L51.275,9.686 C51.275,11.444 49.849,12.870 48.091,12.870 ZM25.577,20.330 L21.075,15.827 C19.831,14.584 19.831,12.568 21.075,11.324 C22.318,10.081 24.334,10.081 25.577,11.324 L30.080,15.827 C31.323,17.070 31.323,19.086 30.080,20.330 C28.837,21.573 26.821,21.573 25.577,20.330 Z"/>
-					</g>
-				</svg>
-			</figure>
-			<figure class="darker-blue">
-				<svg 
-					xmlns="http://www.w3.org/2000/svg"
-					xmlns:xlink="http://www.w3.org/1999/xlink"
-					width="87px" height="78px"
-					viewBox='0 0 87 78'>
-					<defs>
-					<filter filterUnits="userSpaceOnUse" id="Filter_0" x="0px" y="0px" width="87px" height="78px"  >
-						<feOffset in="SourceAlpha" dx="0" dy="1" />
-						<feGaussianBlur result="blurOut" stdDeviation="0" />
-						<feFlood flood-color="rgb(97, 57, 246)" result="floodOut" />
-						<feComposite operator="atop" in="floodOut" in2="blurOut" />
-						<feComponentTransfer><feFuncA type="linear" slope="0.75"/></feComponentTransfer>
-						<feMerge>
-						<feMergeNode/>
-						<feMergeNode in="SourceGraphic"/>
-					</feMerge>
-					</filter>
-
-					</defs>
-					<g filter="url(#Filter_0)">
-					<path fill-rule="evenodd"  fill="rgb(255, 255, 255)"
-					d="M83.113,41.524 L76.745,41.524 C74.987,41.524 73.562,40.099 73.562,38.340 C73.562,36.582 74.987,35.157 76.745,35.157 L83.113,35.157 C84.872,35.157 86.297,36.582 86.297,38.340 C86.297,40.099 84.872,41.524 83.113,41.524 ZM70.604,20.330 C69.361,21.573 67.345,21.573 66.101,20.330 C64.858,19.086 64.858,17.070 66.101,15.827 L70.604,11.324 C71.847,10.081 73.863,10.081 75.107,11.324 C76.350,12.568 76.350,14.584 75.107,15.827 L70.604,20.330 ZM65.912,45.178 L65.912,45.178 C68.696,48.497 70.378,52.772 70.378,57.444 C70.378,67.994 61.825,76.547 51.275,76.547 C46.855,76.547 30.893,76.547 25.804,76.547 C11.737,76.547 0.333,65.143 0.333,51.076 C0.333,37.009 11.737,25.605 25.804,25.605 C28.307,25.605 30.722,25.975 33.006,26.649 C36.501,22.146 41.950,19.237 48.091,19.237 C58.641,19.237 67.194,27.790 67.194,38.340 C67.194,40.753 66.728,43.052 65.912,45.178 ZM6.701,51.076 C6.701,61.626 15.253,70.179 25.804,70.179 C31.561,70.179 46.467,70.179 51.275,70.179 C58.308,70.179 64.010,64.477 64.010,57.444 C64.010,50.410 58.308,44.708 51.275,44.708 C48.727,44.708 46.366,45.475 44.375,46.763 C42.414,38.298 34.865,31.973 25.804,31.973 C15.253,31.973 6.701,40.525 6.701,51.076 ZM48.091,25.605 C44.568,25.605 41.381,27.035 39.075,29.347 C42.801,31.631 45.899,34.843 48.037,38.667 C49.095,38.485 50.166,38.340 51.275,38.340 C54.658,38.340 57.831,39.229 60.588,40.772 L60.588,40.772 C60.740,39.984 60.826,39.173 60.826,38.340 C60.826,31.307 55.124,25.605 48.091,25.605 ZM48.091,12.870 C46.332,12.870 44.907,11.444 44.907,9.686 L44.907,3.318 C44.907,1.560 46.332,0.134 48.091,0.134 C49.849,0.134 51.275,1.560 51.275,3.318 L51.275,9.686 C51.275,11.444 49.849,12.870 48.091,12.870 ZM25.577,20.330 L21.075,15.827 C19.831,14.584 19.831,12.568 21.075,11.324 C22.318,10.081 24.334,10.081 25.577,11.324 L30.080,15.827 C31.323,17.070 31.323,19.086 30.080,20.330 C28.837,21.573 26.821,21.573 25.577,20.330 Z"/>
-					</g>
-				</svg>
-			</figure>
-			<figure class="mustard">
-					<svg class="icon" viewBox="0 0 86 89" xmlns="http://www.w3.org/2000/svg">
-					<defs>
-					<filter id="a" x="0px" y="0px" width="86px" height="89px" filterUnits="userSpaceOnUse">
-					<feOffset dx="0" dy="1" in="SourceAlpha"/>
-					<feGaussianBlur result="blurOut"/>
-					<feFlood flood-color="rgb(227, 182, 61)" result="floodOut"/>
-					<feComposite in="floodOut" in2="blurOut" operator="atop"/>
-					<feComponentTransfer>
-					<feFuncA slope="0.75" type="linear"/>
-					</feComponentTransfer>
-					<feMerge>
-					<feMergeNode/>
-					<feMergeNode in="SourceGraphic"/>
-					</feMerge>
-					</filter>
-					</defs>
-					<g filter="url(#a)">
-					<path d="m82.033 40.873h-6.281c-1.734 0-3.14-1.406-3.14-3.141 0-1.734 1.406-3.14 3.14-3.14h6.281c1.735 0 3.141 1.406 3.141 3.14 0 1.735-1.406 3.141-3.141 3.141zm-12.339-20.907c-1.226 1.227-3.215 1.227-4.441 0-1.226-1.226-1.226-3.215 0-4.441l4.441-4.441c1.227-1.227 3.215-1.227 4.442 0 1.226 1.226 1.226 3.215 0 4.441l-4.442 4.441zm-4.628 24.511c2.746 3.274 4.405 7.491 4.405 12.098 0 8.201-5.248 15.159-12.562 17.749v-6.881c3.751-2.173 6.281-6.221 6.281-10.868 0-6.938-5.624-12.562-12.562-12.562-2.513 0-4.842 0.756-6.806 2.027-1.934-8.35-9.38-14.589-18.319-14.589-10.406 0-18.843 8.436-18.843 18.843 0 5.574 2.434 10.567 6.281 14.017v7.719c-7.502-4.346-12.562-12.442-12.562-21.736 0-13.876 11.249-25.124 25.124-25.124 2.47 0 4.852 0.365 7.105 1.029 3.447-4.441 8.822-7.31 14.879-7.31 10.407 0 18.844 8.436 18.844 18.843 0 2.38-0.46 4.648-1.265 6.745zm-17.579-19.307c-3.474 0-6.619 1.411-8.893 3.691 3.676 2.253 6.731 5.421 8.841 9.193 1.043-0.179 2.099-0.322 3.193-0.322 3.338 0 6.467 0.876 9.187 2.399 0.15-0.777 0.235-1.578 0.235-2.399 0-6.938-5.625-12.562-12.563-12.562zm0-12.562c-1.734 0-3.14-1.406-3.14-3.141v-6.281c0-1.734 1.406-3.141 3.14-3.141 1.735 0 3.141 1.407 3.141 3.141v6.281c0 1.735-1.406 3.141-3.141 3.141zm-22.207 7.358l-4.441-4.441c-1.227-1.226-1.227-3.215 0-4.441 1.226-1.227 3.215-1.227 4.441 0l4.442 4.441c1.226 1.226 1.226 3.215 0 4.441-1.227 1.227-3.215 1.227-4.442 0zm-2.917 42.891c1.734 0 3.14 1.406 3.14 3.14 0 1.735-1.406 3.141-3.14 3.141-1.735 0-3.141-1.406-3.141-3.141 0-1.734 1.406-3.14 3.141-3.14zm0 12.562c1.734 0 3.14 1.406 3.14 3.14 0 1.735-1.406 3.141-3.14 3.141-1.735 0-3.141-1.406-3.141-3.141 0-1.734 1.406-3.14 3.141-3.14zm12.562-6.281c1.735 0 3.141 1.406 3.141 3.14 0 1.735-1.406 3.141-3.141 3.141-1.734 0-3.14-1.406-3.14-3.141 0-1.734 1.406-3.14 3.14-3.14zm0 12.562c1.735 0 3.141 1.406 3.141 3.14 0 1.735-1.406 3.141-3.141 3.141-1.734 0-3.14-1.406-3.14-3.141 0-1.734 1.406-3.14 3.14-3.14zm12.562-18.843c1.735 0 3.141 1.406 3.141 3.14 0 1.735-1.406 3.141-3.141 3.141-1.734 0-3.14-1.406-3.14-3.141 0-1.734 1.406-3.14 3.14-3.14zm0 12.562c1.735 0 3.141 1.406 3.141 3.14 0 1.735-1.406 3.141-3.141 3.141-1.734 0-3.14-1.406-3.14-3.141 0-1.734 1.406-3.14 3.14-3.14z" fill="#fff" fill-rule="evenodd"/>
-					</g>
-				</svg>
-			</figure>
-			<figure class="rose">
-				<svg 
-					xmlns="http://www.w3.org/2000/svg"
-					xmlns:xlink="http://www.w3.org/1999/xlink"
-					width="63px" height="66px">
-					<defs>
-					<filter filterUnits="userSpaceOnUse" id="Filter_0" x="0px" y="0px" width="63px" height="66px"  >
-						<feOffset in="SourceAlpha" dx="0" dy="1" />
-						<feGaussianBlur result="blurOut" stdDeviation="0" />
-						<feFlood flood-color="rgb(220, 61, 102)" result="floodOut" />
-						<feComposite operator="atop" in="floodOut" in2="blurOut" />
-						<feComponentTransfer><feFuncA type="linear" slope="0.75"/></feComponentTransfer>
-						<feMerge>
-						<feMergeNode/>
-						<feMergeNode in="SourceGraphic"/>
-					</feMerge>
-					</filter>
-
-					</defs>
-					<g filter="url(#Filter_0)">
-					<path fill-rule="evenodd"  fill="rgb(255, 255, 255)"
-					d="M56.713,50.154 L56.713,50.214 L55.848,50.214 L52.389,50.214 C51.116,50.214 50.083,49.182 50.083,47.908 C50.083,46.635 51.116,45.602 52.389,45.602 L55.848,45.602 C57.122,45.602 58.154,44.570 58.154,43.296 C58.154,42.023 57.122,40.990 55.848,40.990 C54.575,40.990 53.542,39.958 53.542,38.684 C53.542,37.411 54.575,36.378 55.848,36.378 C56.008,36.378 56.163,36.394 56.313,36.425 C59.913,36.668 62.766,39.635 62.766,43.296 C62.766,46.823 60.125,49.728 56.713,50.154 ZM50.417,27.154 L50.428,27.154 C50.673,27.848 50.872,28.564 51.005,29.303 C49.398,28.155 47.488,27.405 45.414,27.210 C45.403,27.190 45.389,27.173 45.377,27.154 L45.380,27.154 C43.785,24.400 40.813,22.542 37.400,22.542 C35.555,22.542 33.845,23.097 32.403,24.031 C30.983,17.900 25.515,13.318 18.952,13.318 C11.311,13.318 5.116,19.513 5.116,27.154 L5.116,27.154 C5.116,34.796 11.311,40.990 18.952,40.990 C21.948,40.990 28.353,40.990 33.020,40.990 L44.318,40.990 C45.592,40.990 46.624,39.958 46.624,38.684 C46.624,37.411 45.592,36.378 44.318,36.378 C43.045,36.378 42.012,35.346 42.012,34.072 C42.012,32.799 43.045,31.766 44.318,31.766 C44.478,31.766 44.633,31.782 44.783,31.813 C48.383,32.056 51.236,35.023 51.236,38.684 C51.236,42.211 48.595,45.116 45.183,45.542 L45.183,45.602 L44.318,45.602 L35.110,45.602 C30.484,45.602 22.012,45.602 18.952,45.602 C17.679,45.602 16.646,46.635 16.646,47.908 C16.646,49.182 17.679,50.214 18.952,50.214 L44.318,50.214 L45.183,50.214 L45.183,50.274 C48.595,50.700 51.236,53.605 51.236,57.132 C51.236,60.794 48.383,63.760 44.783,64.003 C44.633,64.034 44.478,64.050 44.318,64.050 C43.045,64.050 42.012,63.018 42.012,61.744 C42.012,60.471 43.045,59.438 44.318,59.438 C45.592,59.438 46.624,58.406 46.624,57.132 C46.624,55.859 45.592,54.826 44.318,54.826 L18.952,54.826 L18.088,54.826 L18.088,54.767 C14.676,54.340 12.034,51.435 12.034,47.908 C12.034,46.691 12.373,45.564 12.926,44.575 C5.701,42.075 0.504,35.229 0.504,27.154 C0.504,16.966 8.764,8.706 18.952,8.706 C21.261,8.706 23.466,9.139 25.501,9.914 C27.387,4.515 32.511,0.635 38.553,0.635 C39.424,0.635 40.273,0.725 41.099,0.879 C40.947,1.543 40.859,2.231 40.859,2.941 C40.859,8.035 44.989,12.165 50.083,12.165 C50.793,12.165 51.482,12.077 52.145,11.926 C52.299,12.752 52.389,13.600 52.389,14.471 C52.389,18.085 50.992,21.365 48.723,23.830 C49.435,24.843 49.994,25.967 50.417,27.154 ZM36.491,5.487 C33.147,6.252 30.525,8.842 29.660,12.145 L29.660,12.145 C31.871,13.728 33.722,15.782 35.056,18.167 C35.821,18.035 36.597,17.930 37.400,17.930 C40.419,17.930 43.204,18.908 45.478,20.549 C46.468,19.419 47.191,18.049 47.538,16.533 C41.940,15.491 37.534,11.084 36.491,5.487 Z"/>
-					</g>
-				</svg>
-			</figure>
-			<figure class="purple">
-				<svg class="icon" 
-					xmlns="http://www.w3.org/2000/svg"
-					xmlns:xlink="http://www.w3.org/1999/xlink">
-					<defs>
-					<filter filterUnits="userSpaceOnUse" id="Filter_0" x="0px" y="0px" width="88px" height="65px"  >
-						<feOffset in="SourceAlpha" dx="0" dy="1" />
-						<feGaussianBlur result="blurOut" stdDeviation="0" />
-						<feFlood flood-color="rgb(189, 84, 205)" result="floodOut" />
-						<feComposite operator="atop" in="floodOut" in2="blurOut" />
-						<feComponentTransfer><feFuncA type="linear" slope="0.75"/></feComponentTransfer>
-						<feMerge>
-						<feMergeNode/>
-						<feMergeNode in="SourceGraphic"/>
-					</feMerge>
-					</filter>
-
-					</defs>
-					<g filter="url(#Filter_0)">
-					<path fill-rule="evenodd"  fill="rgb(255, 255, 255)"
-					d="M32.371,63.129 C14.935,63.129 0.800,48.994 0.800,31.558 C0.800,14.122 14.935,-0.013 32.371,-0.013 C44.219,-0.013 54.530,6.523 59.930,16.177 C61.240,15.952 62.568,15.773 63.942,15.773 C77.019,15.773 87.620,26.374 87.620,39.451 C87.620,52.528 77.019,63.129 63.942,63.129 C58.465,63.129 38.680,63.129 32.371,63.129 ZM63.942,55.236 C72.660,55.236 79.728,48.169 79.728,39.451 C79.728,30.733 72.660,23.665 63.942,23.665 C60.784,23.665 57.858,24.616 55.390,26.213 C52.959,15.720 43.603,7.880 32.371,7.880 C19.294,7.880 8.693,18.481 8.693,31.558 C8.693,44.635 19.294,55.236 32.371,55.236 C39.507,55.236 57.983,55.236 63.942,55.236 Z"/>
-					</g>
-				</svg>
+			<app-select-country :countries="countries" @countryWasChoose="setCities"></app-select-country>
+			<app-select-city :selectedCitiesFromParent="cities"></app-select-city>			
+			<figure class="purple" v-for="(item, index) in randomCitiesData" :key="index">
+				<i :class="['icon', setWeatherIcon(item.weather[0].main)]"></i>
+				<p>{{item.name}}</p>
 			</figure>
 		</div>
 	</div>
@@ -165,8 +21,8 @@ export default {
 	data() {
 		return {
 			countries: [],
-			country: "",
-			cities: []
+			cities: [],
+			randomCitiesData: []
 		}
 	},
 	components: {
@@ -174,41 +30,65 @@ export default {
 		appSelectCity: SelectCity
 	},
 	methods: {
-		getCountry(country) {
-			this.country = country;
-		}
-	},
-	computed: {
-		selectedCitiesList() {
-			return this.cities = cityList.filter(elem => elem.country === this.country);
-		}
-	},
-	created() {
-		this.$http.get("https://api.openweathermap.org/data/2.5/weather?q=Odessa,ua&units=metric&appid=e642e0062bffd9aca2bf891e4d8646a2")
-			.then( response => {
-				return response.json();
-			});
-	},
-	mounted() {
-		let set = new Set();
-		cityList.forEach( elem => set.add(elem.country));
-		set.forEach(elem => {
-			if (elem) {
-				const currentItem = countriesCodes.find(item => item['alpha-2'] === elem);
-
-				if (currentItem) {
-					this.countries.push({
-						value: elem,
-						label: currentItem.name
-					});
-				}
+		setCities(country) {
+			this.cities = cityList.filter(elem => elem.country === country);
+			this.getRandomCities();
+		},
+		
+		getRandomCities() {
+			let randomIndex = [];
+			for (let i = 0; i < 6; i++) {
+				randomIndex.push(Math.floor(Math.random() * (this.cities.length - 1) + 1));
 			}
-		});
+
+			let randomCities = [];
+			randomIndex.forEach( elem => {
+				randomCities.push(this.cities[elem].id);
+			});
+			randomCities = randomCities.join();
+
+			this.$http.get(`https://api.openweathermap.org/data/2.5/group?id=${randomCities}&units=metric&appid=e642e0062bffd9aca2bf891e4d8646a2`)
+				.then( response => response.json())
+				.then( data => this.randomCitiesData = data.list);
+		},
+
+		setCountries () {
+			let set = new Set();
+			cityList.forEach( elem => set.add(elem.country));
+			set.forEach(elem => {
+				if (elem) {
+					const currentItem = countriesCodes.find(item => item['alpha-2'] === elem);
+
+					if (currentItem) {
+						this.countries.push({
+							value: elem,
+							label: currentItem.name
+						});
+					}
+				}
+			});
+		},
+		setWeatherIcon (weather) {
+			if (weather === "Rain" || weather === "Thunderstorm" || weather === "Drizzle" || weather === "Snow") {
+				return "icon-rain";
+			} else if (weather === "Clouds") {
+				return "icon-simple-cloud";
+			} else if (weather === "Atmosphere" || weather === "Clear") {
+				return "icon-sun-cloud";
+			}
+
+		}
+	},
+
+	mounted() {
+		this.setCountries();
 	}
 }
 </script>
 
-<style>
+<style lang="scss">
+@import "./styles/icons.scss";
+
 #app {
 	font-family: 'Avenir', Helvetica, Arial, sans-serif;
 	-webkit-font-smoothing: antialiased;
@@ -245,7 +125,7 @@ figure {
 	background-color: #4ed486;
 }
 
-.darker-blue{
+.darker-blue {
 	background-color: #6139f6;
 }
 
@@ -261,9 +141,4 @@ figure {
 	background-color: #bd54cd;
 }
 
-.icon {
-	overflow: visible;
-	width: 100px;
-	height: 80px;
-}
 </style>
