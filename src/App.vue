@@ -3,9 +3,10 @@
 		<div class="container">
 			<app-select-country :countries="countries" @countryWasChoose="setCities"></app-select-country>
 			<app-select-city :selectedCitiesFromParent="cities"></app-select-city>			
-			<figure class="purple" v-for="(item, index) in randomCitiesData" :key="index">
+			<figure :class="setFigureClass(index)" v-for="(item, index) in randomCitiesData" :key="index">
 				<i :class="['icon', setWeatherIcon(item.weather[0].main)]"></i>
-				<p>{{item.name}}</p>
+				<p class="info"><strong>{{item.name}}</strong></p>
+				<p class="info">Temperature is: {{item.main.temp}}</p>
 			</figure>
 		</div>
 	</div>
@@ -76,7 +77,28 @@ export default {
 			} else if (weather === "Atmosphere" || weather === "Clear") {
 				return "icon-sun-cloud";
 			}
-
+		},
+		setFigureClass (i) {
+			switch (i) {
+				case 0:
+					return 'purple';
+					break;
+				case 1:
+					return "lightgreen";
+					break;
+				case 2:
+					return "rose";
+					break;
+				case 3: 
+					return "mustard";
+					break;
+				case 4:
+					return "blue";
+					break;
+				case 5:
+					return "darker-blue";
+					break;
+			}
 		}
 	},
 
@@ -139,6 +161,10 @@ figure {
 
 .purple {
 	background-color: #bd54cd;
+}
+
+.info {
+	line-height: 0.3;
 }
 
 </style>
