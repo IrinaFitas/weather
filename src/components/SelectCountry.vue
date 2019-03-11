@@ -46,6 +46,7 @@ export default {
             padding: 15px;
             border: 2px solid #004d00;
             outline: none;
+            width: 45%;
         }
 
         option {

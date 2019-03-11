@@ -2,12 +2,13 @@
 	<div id="app">
 		<div class="container">
 			<app-select-country :countries="countries" @countryWasChoose="setCities"></app-select-country>
-			<app-select-city :selectedCitiesFromParent="cities"></app-select-city>			
-			<figure :class="setFigureClass(index)" v-for="(item, index) in randomCitiesData" :key="index">
+			<app-select-city :selectedCitiesFromParent="cities" @cityWasSelected="selectCity"></app-select-city>			
+			<figure :class="setFigureClass(index)" v-for="(item, index) in randomCitiesData" :key="index" v-if="showRandom">
 				<i :class="['icon', setWeatherIcon(item.weather[0].main)]"></i>
 				<p class="info"><strong>{{item.name}}</strong></p>
-				<p class="info">Temperature is: {{item.main.temp}}</p>
+				<p class="info">Temperature is: {{item.main.temp}}&#176;</p>
 			</figure>
+			<app-selected-city :selectedCity="choosenCity" v-if="showRandom === false"></app-selected-city>
 		</div>
 	</div>
 </template>
@@ -17,18 +18,22 @@ import cityList from "./data/city.list.min.json";
 import countriesCodes from "./data/countries.iso.codes.json";
 import SelectCountry from "./components/SelectCountry.vue";
 import SelectCity from "./components/SelectCity.vue";
+import SelectedCity from "./components/SelectedCity.vue";
 
 export default {
 	data() {
 		return {
 			countries: [],
 			cities: [],
-			randomCitiesData: []
+			randomCitiesData: [],
+			choosenCity: "",
+			showRandom: true
 		}
 	},
 	components: {
 		appSelectCountry: SelectCountry,
-		appSelectCity: SelectCity
+		appSelectCity: SelectCity,
+		appSelectedCity: SelectedCity
 	},
 	methods: {
 		setCities(country) {
@@ -37,6 +42,7 @@ export default {
 		},
 		
 		getRandomCities() {
+			this.showRandom = true;
 			let randomIndex = [];
 			for (let i = 0; i < 6; i++) {
 				randomIndex.push(Math.floor(Math.random() * (this.cities.length - 1) + 1));
@@ -99,6 +105,16 @@ export default {
 					return "darker-blue";
 					break;
 			}
+		},
+		
+		selectCity(city) {
+			this.$http.get(`https://api.openweathermap.org/data/2.5/group?id=${city}&units=metric&appid=e642e0062bffd9aca2bf891e4d8646a2`)
+				.then( response => response.json() )
+				.then( data => {
+					this.choosenCity = data.list[0];
+					console.log(this.choosenCity);
+				});
+			this.showRandom = false;
 		}
 	},
 
